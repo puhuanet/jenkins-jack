@@ -2,7 +2,7 @@
 
 ## Pipeline
 
-> __NOTE:__ This jack's commands are only visible when the view has the `groovy` language mode set. In order to execute a pipeline, you also must be editing a local file.
+> __NOTE:__ Pipeline Jack command list are only visible when the view has the `groovy` language mode set. In order to execute a pipeline, you also must be editing a local file.
 
 ### Execute
 

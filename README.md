@@ -8,25 +8,35 @@ Honestly, not that much more.
 
 ## Features
 
+* Tree View
+    * Pipeline Tree
+        * Manage local scripts in relation to jobs on the targeted host
+        * Pull job script from host
+        * Pull replay script from build on host
+        * Re-open your pulled script; association saved in `settings.json`
+    * Job Tree
+        * View jobs and builds on the host
+        * Disable, enable, delete jobs and builds on the targeted host
+    * Node Tree
+        * View nodes on the host
+        * Disable (with offline message), enable, disconnect nodes on the targeted host
 * Pipeline Jack
     * Execute (with build paramaters)
         * Stream syntax highlighted output to output channel
-    * Abort
-    * Update
+    * Abort executed pipeline
+    * Update target pipeline job on host with script
     * Shared Library reference docs
 * Script Console Jack
-    * Execute
+    * Execute groovy console script at the System level or accross one or more ndoes
 * Node Jack
-    * Set multiple nodes offline
-    * Set multiple nodes online
-    * Disconnect multiple nodes
+    * Disable (with an offline message), enable, or disconnect one or more nodes
+    * Update the labels on one more more nodes
 * Job Jack
-    * Disable multiple jobs
-    * Enable mulitiple jobs
-    * Delete multiple jobs
+    * Disable, enable, delete, or view one or more jobs
 * Build Jack
     * Download a build log
-    * Delete multiple builds
+    * Download a build replay script
+    * Delete one or more builds
 * Supports switching between Jenkins hosts for running commands
 * Pipeline (GDSL) auto-completions for `groovy` files
 
@@ -43,6 +53,25 @@ See [jacks](jacks.md) for a more comprehensive list of commands and features.
 |__Node__|Select one or more nodes to set offine, online, or disconnect from the remote Jenkins.|`extension.jenkins-jack.node`|
 
 Individual jacks can be mapped to hot keys as user sees fit.
+
+## Tree View
+
+The extension provides tree views for managing/associating your local pipeline scripts
+
+A tree view of pipeline jobs discovered from the targeted Jenkins host is provided to the user, accessible through sidebar via the Jenkins Jack icon.
+
+![Pipeline Job Tree](images/doc/pipeline_job_tree_view.png)
+
+This view allows a user to tie their their local scripts to pipeline job's discovered on the targeted host. From this view a user can:
+
+* __Pull Job Script__: Pull a pipeline script from the host job's configuration (if one exists) and save it locally, creating the Jenkins Jack Pipeline config for the script in the process.
+* __Pull Replay Script__: Pull a replay script from a host job's build and save it locally, creating the Jenkins Jack Pipeline config for the script in the process.
+* __Open Script__: If a script was already pulled/configured, easily open it in the editor through this option.
+
+Job to local script associations can be found in `settings.json` under `jenkins-jack.pipeline.tree.items`.
+> **NOTE**:
+> The tree view (currently) will not pull Multibranch or Org level jobs. This is because of pathing reasons as I haven't a nice way of handling this.
+>For now the Pipeline Job Tree only works for standard __Pipeline__ jobs. Yes, I am sad too.
 
 ## Auto-completions (faux snippets)
 
